@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-      <h1 align="center">Build a blog</h1> 
+    {% if blogs is iterable %} 
+        <h1 align="center">Build a blog</h1> 
 
         
         {% for blog in blogs %}
@@ -8,7 +9,10 @@
             <p> {{blog.body}}</p>
 
             <hr />
-                    
         {% endfor %}
+    {% else %}
+        <h1 align="center">{{blogs.title}}</h1> 
+        <p> {{blogs.body}}</p>         
+    {% endif %}
 {% endblock %}
    

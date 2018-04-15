@@ -35,7 +35,8 @@ def index():
 
     if id_scrin:
         blog_get = Blog.query.filter_by(id=id_scrin).first()
-        return render_template('blog_detail.html', blog_title=blog_get.title, blog_body=blog_get.body)
+        return render_template("blog_guts.html", blogs=blog_get)
+        #return render_template('blog_detail.html', blog_title=blog_get.title, blog_body=blog_get.body)
     return render_template('blog_guts.html', blogs=get_blogs())
 
 @app.route("/newpost", methods=['POST', 'GET'])
