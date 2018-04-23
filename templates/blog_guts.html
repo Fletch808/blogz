@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
     {% if blogs is iterable %} 
-        <h1 align="center">Build a blog</h1> 
-
-        
+        <h1 align="left">blog posts!</h1> 
+ 
         {% for blog in blogs %}
-            <h2><a href="/blog?id={{ blog.id }}">{{blog.title}}</a></h2>
+            <h2><a href="/blog?blog_id={{ blog.id }}">{{blog.title}}</a></h2>
             <p> {{blog.body}}</p>
-
-            <hr />
+            <p>written by: <a href="/blog?user_id={{ blog.owner.id }}">{{ blog.owner.username }}</a></p>
+          
         {% endfor %}
     {% else %}
-        <h1 align="center">{{blogs.title}}</h1> 
-        <p> {{blogs.body}}</p>         
+        <h1 align="left">{{blogs.title}}</h1> 
+        <p align="left"> {{blogs.body}}</p>   
+        <p align="left">written by: <a href="/blog?user_id={{ blogs.owner.id }}">{{ blogs.owner.username }}</a></p>    
     {% endif %}
 {% endblock %}
    
